@@ -1,17 +1,20 @@
 import React from 'react';
 import { Button, Image, View, Text, StyleSheet } from 'react-native';
+import Colors from '../constants/Colors';
 
 
 const ProductCard = (props: any) => {
     const {itemData} = props
     return (
         <View style={styles.product}>
+            <View style={styles.imageContainer}>
             <Image style={styles.image} source={{uri: itemData.imageUrl}}/>
+            </View>
             <Text style={styles.title}>{itemData.title}</Text>
             <Text style={styles.price}>${itemData.price.toFixed(2)}</Text>
             <View style={styles.actions}>
-                <Button onPress={() =>{}} title='Details'/>
-                <Button onPress={() =>{}} title='Add to Cart'/>
+                <Button color={Colors.primary} onPress={() =>{}} title='Details'/>
+                <Button color={Colors.accent} onPress={() =>{}} title='Add to Cart'/>
             </View>
         </View>
     )
@@ -28,11 +31,18 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         height: 300,
         alignItems: 'center',
-        marginVertical: 20,
+        margin: 20,
+    },
+    imageContainer: {
+        width: '100%',
+        height: '60%',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
+        overflow: 'hidden',
     },
     image: {
         width: '100%',
-        height: '60%'
+        height: '100%',
     },
     title: {
         fontSize: 18,
