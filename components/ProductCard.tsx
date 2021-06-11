@@ -13,7 +13,7 @@ const ProductCard = (props: any) => {
         TouchableCmp = TouchableOpacity
     }
     return (
-        <TouchableCmp onPress={props.handleDetailsButton}>
+        <TouchableOpacity onPress={props.handleDetailsButton}>
         <View style={styles.product}>
             <View style={styles.imageContainer}>
             <Image style={styles.image} source={{uri: itemData.imageUrl}}/>
@@ -22,10 +22,10 @@ const ProductCard = (props: any) => {
             <Text style={styles.price}>${itemData.price.toFixed(2)}</Text>
             <View style={styles.actions}>
                 <Button color={Colors.primary} onPress={props.handleDetailsButton} title='Details'/>
-                <Button color={Colors.accent} onPress={() =>{}} title='Add to Cart'/>
+                <Button color={Colors.primary} onPress={() =>{}} title='Add to Cart'/>
             </View>
         </View>
-        </TouchableCmp>
+        </TouchableOpacity>
     )
 }
 
