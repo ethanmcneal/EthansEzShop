@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ProductCard from "../../components/ProductCard";
 
 const ProductsOverviewScreen = (props: any) => {
-	const products = useSelector((state) => state.products.availableProducts);
+	const products = useSelector((state: any) => state.products.availableProducts);
 	return (
 		<FlatList
 			data={products}
