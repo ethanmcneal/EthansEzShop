@@ -1,11 +1,19 @@
 import React from 'react';
-import { Button, Image, View, Text, StyleSheet } from 'react-native';
+import { Button, Image, View, Text, StyleSheet, TouchableOpacity, Platform, TouchableNativeFeedback } from 'react-native';
 import Colors from '../constants/Colors';
 
 
 const ProductCard = (props: any) => {
     const {itemData} = props
+    let TouchableCmp
+
+    if(Platform.OS === 'android' && Platform.Version >= 21){
+        TouchableCmp = TouchableNativeFeedback;
+    } else {
+        TouchableCmp = TouchableOpacity
+    }
     return (
+        <TouchableCmp onPress={props.handleDetailsButton}>
         <View style={styles.product}>
             <View style={styles.imageContainer}>
             <Image style={styles.image} source={{uri: itemData.imageUrl}}/>
@@ -17,6 +25,7 @@ const ProductCard = (props: any) => {
                 <Button color={Colors.accent} onPress={() =>{}} title='Add to Cart'/>
             </View>
         </View>
+        </TouchableCmp>
     )
 }
 

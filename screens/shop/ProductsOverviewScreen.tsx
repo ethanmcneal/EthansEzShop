@@ -11,7 +11,10 @@ const ProductsOverviewScreen = (props: any) => {
 			renderItem={(itemData) => (
 				<ProductCard
 					handleDetailsButton={() => {
-						props.navigation.navigate("ProductDetail",{productId: itemData.item.id});
+						props.navigation.navigate("ProductDetail", {
+							productId: itemData.item.id,
+							productTitle: itemData.item.title,
+						});
 					}}
 					itemData={itemData.item}
 				/>

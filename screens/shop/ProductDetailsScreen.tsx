@@ -18,4 +18,10 @@ const styles = StyleSheet.create({
 
     }
 })
+
+ProductDetailsScreen.navigationOptions = (navData: any) => {
+    return {
+        headerTitle: navData.navigation.getParam('productTitle')
+    };
+}
 export default ProductDetailsScreen
