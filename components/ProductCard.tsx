@@ -13,7 +13,7 @@ const ProductCard = (props: any) => {
             <Text style={styles.title}>{itemData.title}</Text>
             <Text style={styles.price}>${itemData.price.toFixed(2)}</Text>
             <View style={styles.actions}>
-                <Button color={Colors.primary} onPress={() =>{}} title='Details'/>
+                <Button color={Colors.primary} onPress={props.handleDetailsButton} title='Details'/>
                 <Button color={Colors.accent} onPress={() =>{}} title='Add to Cart'/>
             </View>
         </View>
