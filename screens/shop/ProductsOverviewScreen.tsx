@@ -1,10 +1,13 @@
 import React from "react";
 import { FlatList, Text, View } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../../components/ProductCard";
+import * as cartActions from '../../store/actions/cart'
 
 const ProductsOverviewScreen = (props: any) => {
 	const products = useSelector((state: any) => state.products.availableProducts);
+
+	const dispatch = useDispatch();
 	return (
 		<FlatList
 			data={products}
