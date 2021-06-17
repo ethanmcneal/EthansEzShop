@@ -38,6 +38,7 @@ export default (state :any = initialState, action :any) => {
                 let newState = state.items;
                 if(state.items[productToBeRemoved.productId].quantity > 1){
                     newState[productToBeRemoved.productId].quantity -= 1
+                    newState[productToBeRemoved.productId].sum -= priceToBeDeducted
                 } else {
                     delete newState[productToBeRemoved.productId]
                 }
