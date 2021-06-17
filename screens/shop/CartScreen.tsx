@@ -9,7 +9,20 @@ import * as cartActions from '../../store/actions/cart'
 const CartScreen = (props :any) => {
 
     const cartTotalAmount = useSelector((state :any)  => state.cart.totalAmount)
-    const cartItems = useSelector((state :any)  => state.cart.items)
+    const cartItems = useSelector((state :any)  => {
+        const transformedCartItems = [];
+        for(const key in state.cart.items){
+            transformedCartItems.push({
+                productId: key,
+                productTitle: state.cart.items[key].title,
+                productPrice: state.cart.items[key].price,
+                quantity: state.cart.items[key].quantity,
+                sum: state.cart.items[key].sum
+            });
+
+        }
+        return transformedCartItems
+    })
 
     
     const dispatch = useDispatch();
@@ -20,25 +33,11 @@ const CartScreen = (props :any) => {
                 Total:
                 <Text style={styles.amount}>${cartTotalAmount.toFixed(2)}</Text>
                 </Text>
-                <Button title="Order Now" onPress={() => {}} color={Colors.accent}/>
+                <Button title="Order Now" onPress={() => {}} color={Colors.accent} disabled={cartItems.length === 0}/>
             </View>
-            <FlatList
-			data={cartItems}
-			renderItem={(itemData :any) => (
-				<ProductCard
-					handleDetailsButton={() => {
-						props.navigation.navigate("ProductDetail", {
-							productId: itemData.item.id,
-							productTitle: itemData.item.title,
-						});
-					}}
-					handleAddToCartButton={() => {
-						dispatch(cartActions.addToCart(itemData.item))
-					}}
-					itemData={itemData}
-				/>
-			)}
-		/>
+            <View>
+
+            </View>
             <Text>{JSON.stringify(cartItems)}</Text>
         </View>
     )
