@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import CartCard from '../../components/CartCard';
 import ProductCard from '../../components/ProductCard';
 import Colors from '../../constants/Colors';
 import * as cartActions from '../../store/actions/cart'
@@ -14,10 +15,10 @@ const CartScreen = (props :any) => {
         for(const key in state.cart.items){
             transformedCartItems.push({
                 productId: key,
-                productTitle: state.cart.items[key].title,
-                productPrice: state.cart.items[key].price,
+                title: state.cart.items[key].title,
+                price: state.cart.items[key].price,
                 quantity: state.cart.items[key].quantity,
-                sum: state.cart.items[key].sum
+                amount: state.cart.items[key].sum
             });
 
         }
@@ -36,9 +37,10 @@ const CartScreen = (props :any) => {
                 <Button title="Order Now" onPress={() => {}} color={Colors.accent} disabled={cartItems.length === 0}/>
             </View>
             <View>
-
+            <FlatList data={cartItems} keyExtractor={item => item.productId} renderItem={(itemData) => (
+                <CartCard itemData={itemData.item}/>
+            )}/>
             </View>
-            <Text>{JSON.stringify(cartItems)}</Text>
         </View>
     )
 }
