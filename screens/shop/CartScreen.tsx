@@ -1,23 +1,45 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import { useSelector } from 'react-redux';
+import { StyleSheet, Text, View, Button, FlatList } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import ProductCard from '../../components/ProductCard';
+import Colors from '../../constants/Colors';
+import * as cartActions from '../../store/actions/cart'
 
 
-const CartScreen = (props :object) => {
+const CartScreen = (props :any) => {
 
     const cartTotalAmount = useSelector((state :any)  => state.cart.totalAmount)
+    const cartItems = useSelector((state :any)  => state.cart.items)
 
+    
+    const dispatch = useDispatch();
     return (
         <View style={styles.screen}>
             <View style={styles.summary}>
                 <Text style={styles.summaryText}>  
-                <Text style={styles.amount}>$19.99</Text>
+                Total:
+                <Text style={styles.amount}>${cartTotalAmount.toFixed(2)}</Text>
                 </Text>
-                <Button title="order Now" onPress={() => {}}/>
+                <Button title="Order Now" onPress={() => {}} color={Colors.accent}/>
             </View>
-            <View>
-                <Text>Card items</Text>
-            </View>
+            <FlatList
+			data={cartItems}
+			renderItem={(itemData :any) => (
+				<ProductCard
+					handleDetailsButton={() => {
+						props.navigation.navigate("ProductDetail", {
+							productId: itemData.item.id,
+							productTitle: itemData.item.title,
+						});
+					}}
+					handleAddToCartButton={() => {
+						dispatch(cartActions.addToCart(itemData.item))
+					}}
+					itemData={itemData}
+				/>
+			)}
+		/>
+            <Text>{JSON.stringify(cartItems)}</Text>
         </View>
     )
 }
@@ -39,6 +61,7 @@ const styles = StyleSheet.create({
         shadowRadius: 8,
         elevation: 5,
         borderRadius: 10,
+        backgroundColor: 'white',
     },
     summaryText: { 
         fontSize: 18,
