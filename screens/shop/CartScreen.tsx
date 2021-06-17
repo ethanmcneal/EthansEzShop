@@ -38,7 +38,10 @@ const CartScreen = (props :any) => {
             </View>
             <View>
             <FlatList data={cartItems} keyExtractor={item => item.productId} renderItem={(itemData) => (
-                <CartCard itemData={itemData.item}/>
+                <CartCard itemData={itemData.item}
+                handleDelete={() => {
+                    dispatch(cartActions.deleteFromCart(itemData.item))
+                }}/>
             )}/>
             </View>
         </View>
