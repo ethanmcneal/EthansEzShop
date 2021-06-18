@@ -33,6 +33,7 @@ const CartScreen = (props: any) => {
         dispatch(cartActions.clearCart())
         setOrdered(true)
     }
+    console.log('cart', cartItems)
 
     let infoText;
 

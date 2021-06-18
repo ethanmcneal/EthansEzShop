@@ -17,9 +17,9 @@ const CartCard = (props: any) => {
             </View>
 			<View style={styles.itemData}>
 				<Text style={styles.amount}>${itemData.amount}{'  '}</Text>
-                <TouchableOpacity onPress={props.handleDelete} style={styles.deleteButton}>
+               {!props.summary && <TouchableOpacity onPress={props.handleDelete} style={styles.deleteButton}>
                     <Ionicons name={'ios-trash'} color='red' size={23}/>
-                </TouchableOpacity>
+                </TouchableOpacity>}
 			</View>
 		</View>
 	);
@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginHorizontal: 20,
         marginVertical: 8,
+        borderBottomWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 10,
 
     },
     itemData: {
