@@ -1,22 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { useSelector } from 'react-redux';
+import OrderCard from '../../components/OrderCard';
 
 
 const OrdersScreen = (props :any) => {
+
+    const orders = useSelector((state :any) => state.orders.orders);
     return(
-        <View style={styles.screen}>
-            <Text>Orders Screen</Text>
-        </View>
+        <FlatList data={orders} renderItem={(itemData => <OrderCard item={itemData.item}/>)}/>
     )
 }
 
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-})
 
 export default OrdersScreen
