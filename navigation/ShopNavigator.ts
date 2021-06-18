@@ -8,22 +8,30 @@ import ProductDetailsScreen from '../screens/shop/ProductDetailsScreen'
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen'
 import { createDrawerNavigator} from 'react-navigation-drawer'
 
+const defaultNavigationOptions = {
+    headerStyle: {
+        backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
+    },
+    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primary
+}
+
 const ProductsNavigator = createStackNavigator({
     ProductsOverview: ProductsOverviewScreen,
     ProductDetail:  ProductDetailsScreen,
     Cart: CartScreen,
 }, {
-    defaultNavigationOptions: {
-        headerStyle: {
-            backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
-        },
-        headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primary
-    }
+    defaultNavigationOptions: defaultNavigationOptions
+})
+
+const OrdersNavigator = createStackNavigator({
+    Orders: OrdersScreen
+}, {
+    defaultNavigationOptions: defaultNavigationOptions
 })
 
 const ShopDrawerNavigator = createDrawerNavigator({
     Products: ProductsNavigator,
-    Orders: OrdersScreen
-})
+    Orders: OrdersNavigator
+}, )
 
 export default createAppContainer(ShopDrawerNavigator)
