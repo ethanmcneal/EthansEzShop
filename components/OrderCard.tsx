@@ -58,7 +58,7 @@ const OrderCard = (props: any) => {
 			<View style={styles.cardTotal}>
 				<Text style={styles.total}>
 					Total:{" "}
-					<Text style={styles.price}>{props.item.totalAmount}</Text>
+					<Text style={styles.price}>{props.item.totalAmount.toFixed(2)}</Text>
 				</Text>
 			</View>
 		</View>
@@ -89,10 +89,10 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	date: {
-		fontSize: 16,
+		fontSize: 15,
 	},
 	itemCount: {
-		fontSize: 14,
+		fontSize: 15,
 		color: Colors.primary,
 	},
 	cardTotal: {
