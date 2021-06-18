@@ -22,6 +22,8 @@ export default (state = initialState, action: any) => {
 			break;
 
 		default:
+            return state
 			break;
 	}
+    return state
 };

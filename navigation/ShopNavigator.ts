@@ -3,8 +3,10 @@ import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import Colors from '../constants/Colors'
 import CartScreen from '../screens/shop/CartScreen'
+import OrdersScreen from '../screens/shop/OrdersScreen'
 import ProductDetailsScreen from '../screens/shop/ProductDetailsScreen'
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen'
+import { createDrawerNavigator} from 'react-navigation-drawer'
 
 const ProductsNavigator = createStackNavigator({
     ProductsOverview: ProductsOverviewScreen,
@@ -19,4 +21,9 @@ const ProductsNavigator = createStackNavigator({
     }
 })
 
-export default createAppContainer(ProductsNavigator)
+const ShopDrawerNavigator = createDrawerNavigator({
+    Products: ProductsNavigator,
+    Orders: OrdersScreen
+})
+
+export default createAppContainer(ShopDrawerNavigator)
