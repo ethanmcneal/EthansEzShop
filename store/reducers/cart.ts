@@ -1,5 +1,5 @@
 import CartItem from "../../models/cart-item";
-import { ADD_TO_CART, DELETE_FROM_CART } from "../actions/cart";
+import { ADD_TO_CART, CLEAR_CART, DELETE_FROM_CART } from "../actions/cart";
 
 const initialState = {
     items: {},
@@ -46,6 +46,11 @@ export default (state :any = initialState, action :any) => {
                     ...state,
                     items: newState,
                     totalAmount: state.totalAmount - priceToBeDeducted
+                }
+            case CLEAR_CART:
+                return {
+                    items: {},
+                    totalAmount: 0
                 }
         default:
             return state

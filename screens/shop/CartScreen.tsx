@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, FlatList } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import CartCard from "../../components/CartCard";
-import ProductCard from "../../components/ProductCard";
 import Colors from "../../constants/Colors";
 import * as cartActions from "../../store/actions/cart";
 import * as orderActions from "../../store/actions/orders";
@@ -25,7 +24,25 @@ const CartScreen = (props: any) => {
 		);
 	});
 
+    const [ordered, setOrdered] = useState(false)
+
 	const dispatch = useDispatch();
+
+    const orderNowButton = () => {
+        dispatch(orderActions.addOrder(cartItems, cartTotalAmount))
+        dispatch(cartActions.clearCart())
+        setOrdered(true)
+    }
+
+    let infoText;
+
+    if(ordered && cartItems.length === 0){
+        infoText = 'Order Submitted!'
+    } else if (cartItems.length === 0) {
+        infoText = 'No Items'
+    } else {
+        infoText= ''
+    }
 	return (
 		<View style={styles.screen}>
 			<View style={styles.summary}>
@@ -37,9 +54,7 @@ const CartScreen = (props: any) => {
 				</Text>
 				<Button
 					title="Order Now"
-					onPress={() =>
-						dispatch(
-							orderActions.addOrder(cartItems, cartTotalAmount))}
+					onPress={orderNowButton}
 					color={Colors.accent}
 					disabled={cartItems.length === 0}
 				/>
@@ -59,6 +74,11 @@ const CartScreen = (props: any) => {
 						/>
 					)}
 				/>
+                <View style={styles.infoCard}>
+                    <Text style={infoText === 'Order Submitted!' ? {color: 'green', fontSize: 18} : {}}>
+                        {infoText}
+                        </Text>
+                </View>
 			</View>
 		</View>
 	);
@@ -87,5 +107,11 @@ const styles = StyleSheet.create({
 	amount: {
 		color: "green",
 	},
+    infoCard: {
+        alignItems: "center",
+		justifyContent: "center",
+		marginBottom: 20,
+		padding: 10,
+    },
 });
 export default CartScreen;
