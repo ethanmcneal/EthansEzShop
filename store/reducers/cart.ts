@@ -49,17 +49,18 @@ export default (state :any = initialState, action :any) => {
                     totalAmount: state.totalAmount - priceToBeDeducted
                 }
             case CLEAR_CART:
+                return {
+                    ...state,
+                    items: {},
+                    totalAmount: 0
+                }
+            case DELETE_PRODUCT:
                 if(!state.items[action.pid]){
                     return state
                 }
                 const updatedItems = {...state.items};
                 const itemTotal = state.items[action.pid].sum
                 delete updatedItems[action.pid];
-                return {
-                    items: {},
-                    totalAmount: 0
-                }
-            case DELETE_PRODUCT:
                 return {
                     ...state,
                     items: updatedItems,
