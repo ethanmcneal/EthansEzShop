@@ -1,5 +1,5 @@
 import PRODUCTS from "../../data/dummy-data";
-import { DELETE_PRODUCT } from "../actions/products";
+import { CREATE_PRODUCT, DELETE_PRODUCT } from "../actions/products";
 
 const initialState = {
     availableProducts: PRODUCTS,
@@ -14,6 +14,25 @@ const productsReducer = (state = initialState, action: any) => {
         ...state,
         userProducts: state.userProducts.filter(product => product.id !== action.pid),
         availableProducts: state.availableProducts.filter(product => product.id !== action.pid)
+    }
+    case CREATE_PRODUCT: 
+    const  mostRecentProdId = state.availableProducts[state.availableProducts.length - 1].id
+    let nextId = 'p' + (parseInt(mostRecentProdId.split('')[1]) + 1)
+    const productToBeAdded = {
+        id: nextId,
+        ownerId: 'u1',
+        ...action.createdProduct
+    }
+    return {
+        ...state,
+        availableProducts: {
+            ...state.availableProducts,
+            productToBeAdded
+        },
+        userProducts: {
+            ...state.userProducts,
+            productToBeAdded
+        }
     }
     default:
     return state;}
