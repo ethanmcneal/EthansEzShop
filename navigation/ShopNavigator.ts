@@ -8,6 +8,7 @@ import ProductDetailsScreen from '../screens/shop/ProductDetailsScreen'
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen'
 import { createDrawerNavigator} from 'react-navigation-drawer'
 import UserProducts from '../screens/user/UserProducts'
+import EditProductScreen from '../screens/user/EditProductScreen'
 
 const defaultNavigationOptions = {
     headerStyle: {
@@ -31,7 +32,8 @@ const OrdersNavigator = createStackNavigator({
 })
 
 const UsersNavigator = createStackNavigator({
-    'Users Items': UserProducts
+    'Users Items': UserProducts,
+    EditProduct: EditProductScreen
 }, {
     defaultNavigationOptions: defaultNavigationOptions
 })

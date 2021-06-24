@@ -16,7 +16,9 @@ const UserProducts = (props :any) => {
     keyExtractor={item => item.id} 
     renderItem={(itemData) => <ProductCard 
                                 itemData={itemData.item}
-                                handleEditButton={() => {}}
+                                handleEditButton={() => {
+                                    props.navigation.navigate('EditProduct')
+                                }}
                                 handleDeleteButton={() => {
                                     dispatch(productsActions.deleteProduct(itemData.item.id))
                                 }}
