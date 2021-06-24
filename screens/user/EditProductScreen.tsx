@@ -2,23 +2,30 @@ import React, { useEffect, useState } from "react";
 
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useDispatch } from "react-redux";
 import CustomHeaderButton from "../../components/UI/CustomHeaderButton";
+import * as productActions from '../../store/actions/products'
 
 const EditProductScreen = (props: any) => {
 	const [product, setProduct] = useState({
 		title: "",
-		imageUrl: "",
+		imageUrl: "https://picsum.photos/id/237/200/300",
 		description: "",
 		price: "",
 	});
 
+    const dispatch = useDispatch()
 	const handleChange = (text: any, value: string) => {
 		setProduct({ ...product, [value]: text });
 	};
-    useEffect(() => {
-        props.navigation.setParams({product: product})
-    },[product])
     
+    const submitHandler = () => {
+        dispatch(productActions.createProduct(product))
+        console.log('dispatching...')
+    }
+    useEffect(() => {
+        props.navigation.setParams({submit: submitHandler})
+    },[product])
 	return (
 		<ScrollView>
 			<View style={styles.form}>
@@ -62,7 +69,6 @@ const EditProductScreen = (props: any) => {
 };
 
 EditProductScreen.navigationOptions = (navData: any) => {
-    let product = navData.navigation.getParam('product')
 	return {
 		headerTitle: navData.navigation.getParam("productId")
 			? "Edit Product"
@@ -74,7 +80,7 @@ EditProductScreen.navigationOptions = (navData: any) => {
 						title="Save"
 						iconName={"ios-checkmark"}
 						onPress={() => {
-                            console.log(product)
+                            navData.navigation.getParam("submit")()
                         }}
 					/>
 				</HeaderButtons>
