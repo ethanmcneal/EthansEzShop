@@ -16,7 +16,7 @@ const CartCard = (props: any) => {
 			</Text>
             </View>
 			<View style={styles.itemData}>
-				<Text style={styles.amount}>${itemData.amount}{'  '}</Text>
+				<Text style={styles.amount}>${itemData.amount.toFixed(2)}{'  '}</Text>
                {!props.summary && <TouchableOpacity onPress={props.handleDelete} style={styles.deleteButton}>
                     <Ionicons name={'ios-trash'} color='red' size={23}/>
                 </TouchableOpacity>}

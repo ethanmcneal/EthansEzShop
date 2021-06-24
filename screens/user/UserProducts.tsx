@@ -39,7 +39,7 @@ UserProducts.navigationOptions = (navData :any) => {
 		)},
     headerRight: () => { 
     return (<HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-        <Item title='Menu' iconName={'ios-add'} onPress={() => {
+        <Item title='Add' iconName={'ios-create'} onPress={() => {
             navData.navigation.navigate('EditProduct');
         }}/>
     </HeaderButtons>
