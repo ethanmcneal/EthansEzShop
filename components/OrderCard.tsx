@@ -11,15 +11,14 @@ const OrderCard = (props: any) => {
 	let items = props.item.items;
 	console.log(props.item);
 
-	if (!showDetails) {
 		return (
-			<View style={styles.card}>
+		<View style={styles.card}>
 				<View style={styles.cardTop}>
 					<Text style={styles.date}>{date}</Text>
 
 					<TouchableOpacity
 						style={styles.cardTopRight}
-						onPress={() => setShowDetails(true)}
+						onPress={() => setShowDetails(!showDetails)}
 					>
 						<Text style={styles.itemCount}>
 							{props.item.items.length} Items
@@ -31,26 +30,9 @@ const OrderCard = (props: any) => {
 						/>
 					</TouchableOpacity>
 				</View>
-			</View>
-		);
-	}
-
-	return (
-		<View style={styles.card}>
-			<View style={styles.cardTop}>
-				<Text style={styles.date}>{date}</Text>
-
-				<TouchableOpacity
-					style={styles.cardTopRight}
-					onPress={() => setShowDetails(false)}
-				>
-					<Text style={styles.itemCount}>
-						{props.item.items.length} Items
-					</Text>
-					<Ionicons name="caret-up" size={22} color={Colors.accent} />
-				</TouchableOpacity>
-			</View>
-			<FlatList
+	{showDetails && 
+			<>
+				<FlatList
 				data={items}
 				keyExtractor={(item) => item.productId}
 				renderItem={(itemData) => <CartCard itemData={itemData.item} summary={true}/>}
@@ -60,10 +42,11 @@ const OrderCard = (props: any) => {
 					Total:{" "}
 					<Text style={styles.price}>{props.item.totalAmount.toFixed(2)}</Text>
 				</Text>
-			</View>
+			</View> 
+			</>}
 		</View>
-	);
-};
+		);
+	}
 
 const styles = StyleSheet.create({
 	card: {
