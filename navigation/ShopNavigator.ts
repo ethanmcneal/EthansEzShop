@@ -32,6 +32,10 @@ const OrdersNavigator = createStackNavigator({
 const ShopDrawerNavigator = createDrawerNavigator({
     Products: ProductsNavigator,
     Orders: OrdersNavigator
+}, {
+    contentOptions: {
+        activeTintColor: Colors.primary
+    }
 } )
 
 export default createAppContainer(ShopDrawerNavigator)
