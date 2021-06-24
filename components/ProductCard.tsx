@@ -23,6 +23,8 @@ const ProductCard = (props: any) => {
             <View style={styles.actions}>
             {props.handleDetailsButton &&  <Button color={Colors.primary} onPress={props.handleDetailsButton} title='Details'/>}
             {props.handleAddToCartButton &&   <Button color={Colors.primary} onPress={props.handleAddToCartButton} title='Add to Cart'/>}
+            {props.handleEditButton && <Button color={Colors.primary} onPress={props.handleEditButton} title='Edit'/>}
+            {props.handleDeleteButton && <Button color={Colors.primary} onPress={props.handleDeleteButton} title='Delete'/>}
             </View>
         </View>
         </TouchableOpacity>

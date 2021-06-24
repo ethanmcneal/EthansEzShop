@@ -14,6 +14,8 @@ const UserProducts = (props :any) => {
     keyExtractor={item => item.id} 
     renderItem={(itemData) => <ProductCard 
                                 itemData={itemData.item}
+                                handleEditButton={() => {}}
+                                handleDeleteButton={() => {}}
                                 />}/>
 }
 
