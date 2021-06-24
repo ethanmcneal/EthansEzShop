@@ -17,7 +17,8 @@ const UserProducts = (props :any) => {
     renderItem={(itemData) => <ProductCard 
                                 itemData={itemData.item}
                                 handleEditButton={() => {
-                                    props.navigation.navigate('EditProduct')
+                                    props.navigation.navigate('EditProduct', 
+                                                             {productId: itemData.item.id})
                                 }}
                                 handleDeleteButton={() => {
                                     dispatch(productsActions.deleteProduct(itemData.item.id))
@@ -36,6 +37,13 @@ UserProducts.navigationOptions = (navData :any) => {
 			}}/>
 		</HeaderButtons>
 		)},
+    headerRight: () => { 
+    return (<HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item title='Menu' iconName={'ios-add'} onPress={() => {
+            navData.navigation.navigate('EditProduct');
+        }}/>
+    </HeaderButtons>
+    )},
     }
 }
 export default UserProducts
