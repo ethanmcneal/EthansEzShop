@@ -10,6 +10,6 @@ export const createProduct = (createdProduct :any) => {
     return {type: CREATE_PRODUCT, createdProduct: createdProduct}
 }
 
-export const updateProduct = (updatedProduct :any) => {
-    return {type: UPDATE_PRODUCT, updatedProduct}
+export const updateProduct = (pid :string, updatedProduct :any) => {
+    return {type: UPDATE_PRODUCT, pid,updatedProduct}
 }
