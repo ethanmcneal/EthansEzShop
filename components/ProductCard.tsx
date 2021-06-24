@@ -21,8 +21,8 @@ const ProductCard = (props: any) => {
             <Text style={styles.title}>{itemData.title}</Text>
             <Text style={styles.price}>${itemData.price.toFixed(2)}</Text>
             <View style={styles.actions}>
-                <Button color={Colors.primary} onPress={props.handleDetailsButton} title='Details'/>
-                <Button color={Colors.primary} onPress={props.handleAddToCartButton} title='Add to Cart'/>
+            {props.handleDetailsButton &&  <Button color={Colors.primary} onPress={props.handleDetailsButton} title='Details'/>}
+            {props.handleAddToCartButton &&   <Button color={Colors.primary} onPress={props.handleAddToCartButton} title='Add to Cart'/>}
             </View>
         </View>
         </TouchableOpacity>
