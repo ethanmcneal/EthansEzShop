@@ -1,6 +1,6 @@
 import PRODUCTS from "../../data/dummy-data";
 import Product from "../../models/products";
-import { CREATE_PRODUCT, DELETE_PRODUCT } from "../actions/products";
+import { CREATE_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT } from "../actions/products";
 
 const initialState = {
 	availableProducts: PRODUCTS,
@@ -33,6 +33,21 @@ const productsReducer = (state = initialState, action: any) => {
 				availableProducts: state.availableProducts.concat(productToBeAdded),
 				userProducts: state.userProducts.concat(productToBeAdded)
 			};
+        case UPDATE_PRODUCT: 
+        const productToBeOverWritten = new Product(
+            action.pid,
+            'u1',
+            action.updatedProduct.title,
+            action.updatedProduct.description,
+            action.updatedProduct.imageUrl,
+            parseInt(action.updatedProduct.price),
+        );
+        return {
+            ...state,
+            availableProducts: state.availableProducts.filter(prod => prod.id !== action.pid).concat(productToBeOverWritten),
+            userProducts: state.userProducts.filter(prod => prod.id !== action.pid).concat(productToBeOverWritten)
+    
+        }
 		default:
 			return state;
 	}

@@ -13,10 +13,10 @@ const editedProduct = useSelector((state :any) =>
   );
 
 	const [product, setProduct] = useState({
-		title: editedProduct.title ? editedProduct.title : "",
-		imageUrl: editedProduct.imageUrl ? editedProduct.imageUrl : "",
-		description:editedProduct.description ? editedProduct.description : "",
-		price: editedProduct.price ? editedProduct.price.toString(10) : "",
+		title: editedProduct ? editedProduct.title : "",
+		imageUrl: editedProduct ? editedProduct.imageUrl : "",
+		description:editedProduct ? editedProduct.description : "",
+		price: editedProduct ? editedProduct.price.toString(10) : "",
 	});
 
     const dispatch = useDispatch()
