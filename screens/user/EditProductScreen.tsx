@@ -47,6 +47,10 @@ const editedProduct = useSelector((state :any) =>
 						style={styles.input}
 						value={product.title}
 						onChangeText={(text) => handleChange(text, "title")}
+                        keyboardType='default'
+                        autoCapitalize='sentences'
+                        autoCorrect
+                        returnKeyType='done'
 					/>
 				</View>
 				<View>
@@ -63,6 +67,7 @@ const editedProduct = useSelector((state :any) =>
 						style={styles.input}
 						value={product.price}
 						onChangeText={(text) => handleChange(text, "price")}
+                        keyboardType='decimal-pad'
 					/>
 				</View>
 				<View>
@@ -73,6 +78,8 @@ const editedProduct = useSelector((state :any) =>
 						onChangeText={(text) =>
 							handleChange(text, "description")
 						}
+                        autoCapitalize='sentences'
+                        autoCorrect
 					/>
 				</View>
 			</View>
