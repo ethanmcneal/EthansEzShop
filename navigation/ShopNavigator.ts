@@ -10,10 +10,11 @@ import { createDrawerNavigator} from 'react-navigation-drawer'
 import UserProducts from '../screens/user/UserProducts'
 import EditProductScreen from '../screens/user/EditProductScreen'
 import ShopHomeScreen from '../screens/shop/ShopHomeScreen'
+import Ionicons from '@expo/vector-icons'
 
 const defaultNavigationOptions = {
     headerStyle: {
-        backgroundColor: Platform.OS === 'android' ? Colors.primary : ''
+        backgroundColor: Platform.OS === 'android' ? Colors.primary : '#444'
     },
     headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primary
 }
@@ -52,8 +53,15 @@ const ShopDrawerNavigator = createDrawerNavigator({
     User: UsersNavigator
 }, {
     contentOptions: {
-        activeTintColor: Colors.primary
-    }
-} )
+        inactiveTintColor: Colors.primary,
+        activeBackgroundColor: Colors.primary,
+        activeTintColor: '#222',
+        inactiveBackgroundColor: '#222',
+        overlayColor: '#222',
+        itemsContainerStyle: {}
+    },
+    overlayColor: '#555',
+    drawerBackgroundColor: '#222'
+})
 
 export default createAppContainer(ShopDrawerNavigator)
