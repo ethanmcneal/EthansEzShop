@@ -40,7 +40,7 @@ const OrderCard = (props: any) => {
 			<View style={styles.cardTotal}>
 				<Text style={styles.total}>
 					Total:{" "}
-					<Text style={styles.price}>{props.item.totalAmount.toFixed(2)}</Text>
+					<Text style={styles.price}>${props.item.totalAmount.toFixed(2)}</Text>
 				</Text>
 			</View> 
 			</>}
@@ -50,10 +50,10 @@ const OrderCard = (props: any) => {
 
 const styles = StyleSheet.create({
 	card: {
-		backgroundColor: "white",
+		backgroundColor: "#2f2f2f",
 		marginHorizontal: 20,
 		marginVertical: 10,
-		shadowColor: "black",
+		shadowColor: "white",
 		shadowOpacity: 0.26,
 		shadowOffset: { width: 0, height: 2 },
 		shadowRadius: 8,
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
 	},
 	date: {
 		fontSize: 15,
+		color: 'white'
 	},
 	itemCount: {
 		fontSize: 15,
@@ -84,9 +85,10 @@ const styles = StyleSheet.create({
 	},
 	total: {
 		fontSize: 16,
+		color: 'white',
 	},
 	price: {
-		color: "green",
+		color: Colors.tertiary,
 		fontSize: 16,
 	},
 });

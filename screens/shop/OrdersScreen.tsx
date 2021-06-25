@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector } from 'react-redux';
 import OrderCard from '../../components/OrderCard';
@@ -10,9 +10,16 @@ const OrdersScreen = (props :any) => {
 
     const orders = useSelector((state :any) => state.orders.orders);
     return(
-        <FlatList data={orders} renderItem={(itemData => <OrderCard item={itemData.item}/>)}/>
+        <FlatList style={styles.screen} data={orders} renderItem={(itemData => <OrderCard item={itemData.item}/>)}/>
     )
 }
+
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        backgroundColor: '#222'
+    }
+})
 
 OrdersScreen.navigationOptions = (navData :any) => {
 	return{
