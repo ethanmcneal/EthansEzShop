@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../../components/ProductCard";
@@ -12,6 +12,7 @@ const ProductsOverviewScreen = (props: any) => {
 	const dispatch = useDispatch();
 	return (
 		<FlatList
+		style={styles.screen}
 			data={products}
 			renderItem={(itemData) => (
 				<ProductCard
@@ -30,6 +31,12 @@ const ProductsOverviewScreen = (props: any) => {
 		/>
 	);
 };
+
+const styles = StyleSheet.create({
+	screen: {
+		backgroundColor: '#222'
+	}
+})
 
 ProductsOverviewScreen.navigationOptions = (navData :any) => {
 	return{

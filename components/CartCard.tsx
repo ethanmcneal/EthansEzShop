@@ -2,6 +2,8 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Colors from "../constants/Colors";
+
 
 const CartCard = (props: any) => {
 
@@ -28,7 +30,7 @@ const CartCard = (props: any) => {
 const styles = StyleSheet.create({
 	card: {
         padding: 10,
-        backgroundColor: 'white',
+        backgroundColor: '#444',
         flexDirection: "row",
         justifyContent: 'space-between',
         marginHorizontal: 20,
@@ -45,13 +47,14 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
+        color: 'white',
     },
     amount: {
-        color: 'green',
+        color: Colors.tertiary,
         fontSize: 16,
     },
     quantity: {
-        color: '#888',
+        color: '#ddd',
         fontSize: 14,
     },
 

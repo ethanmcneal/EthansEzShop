@@ -45,6 +45,7 @@ const CartScreen = (props: any) => {
     }
 	return (
 		<View style={styles.screen}>
+		<View style={styles.content}>
 			<View style={styles.summary}>
 				<Text style={styles.summaryText}>
 					Total:
@@ -55,7 +56,7 @@ const CartScreen = (props: any) => {
 				<Button
 					title="Order Now"
 					onPress={orderNowButton}
-					color={Colors.accent}
+					color={Colors.primary}
 					disabled={cartItems.length === 0}
 				/>
 			</View>
@@ -75,16 +76,21 @@ const CartScreen = (props: any) => {
 					)}
 				/>
                 <View style={styles.infoCard}>
-                    <Text style={infoText === 'Order Submitted!' ? {color: 'green', fontSize: 18} : {}}>
+                    <Text style={infoText === 'Order Submitted!' ? {color: Colors.tertiary, fontSize: 18} : {color: 'white'}}>
                         {infoText}
                         </Text>
                 </View>
 			</View>
 		</View>
+		</View>
 	);
 };
 const styles = StyleSheet.create({
 	screen: {
+		backgroundColor: '#222',
+		flex: 1
+	},
+	content: {
 		margin: 20,
 	},
 	summary: {
@@ -93,19 +99,20 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 		marginBottom: 20,
 		padding: 10,
-		shadowColor: "black",
+		shadowColor: "white",
 		shadowOpacity: 0.26,
 		shadowOffset: { width: 0, height: 2 },
 		shadowRadius: 8,
 		elevation: 5,
 		borderRadius: 10,
-		backgroundColor: "white",
+		backgroundColor: "black",
 	},
 	summaryText: {
 		fontSize: 18,
+		color: 'white'
 	},
 	amount: {
-		color: "green",
+		color: Colors.tertiary,
 	},
     infoCard: {
         alignItems: "center",

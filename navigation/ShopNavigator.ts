@@ -58,7 +58,9 @@ const ShopDrawerNavigator = createDrawerNavigator({
         activeTintColor: '#222',
         inactiveBackgroundColor: '#222',
         overlayColor: '#222',
-        itemsContainerStyle: {}
+        itemsContainerStyle: {
+            marginTop: 15,
+        }
     },
     overlayColor: '#555',
     drawerBackgroundColor: '#222'

@@ -24,7 +24,7 @@ const ProductDetailsScreen = (props: any) => {
 
 const styles = StyleSheet.create({
     screen: {
-        backgroundColor: 'white'
+        backgroundColor: '#222'
     },
     image: {
         width: '100%',
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     },
     price: {
         fontSize: 20,
-        color: 'green',
+        color: Colors.tertiary,
         textAlign: 'center',
         marginVertical: 20,
     },
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
         marginHorizontal: 20,
+        color: 'white'
     },
 })
 
