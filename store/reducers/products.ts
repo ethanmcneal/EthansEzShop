@@ -24,8 +24,8 @@ const productsReducer = (state = initialState, action: any) => {
 				new Date().toString(),
 				"u1",
 				action.createdProduct.title,
-				action.createdProduct.description,
 				action.createdProduct.imageUrl,
+				action.createdProduct.description,
 				parseInt(action.createdProduct.price),
 			);
 			return {
@@ -38,10 +38,11 @@ const productsReducer = (state = initialState, action: any) => {
             action.pid,
             'u1',
             action.updatedProduct.title,
-            action.updatedProduct.description,
             action.updatedProduct.imageUrl,
+            action.updatedProduct.description,
             parseInt(action.updatedProduct.price),
         );
+        console.log(action.updatedProduct.imageUrl, 'imageurl')
         return {
             ...state,
             availableProducts: state.availableProducts.filter(prod => prod.id !== action.pid).concat(productToBeOverWritten),

@@ -14,7 +14,7 @@ const editedProduct = useSelector((state :any) =>
 
 	const [product, setProduct] = useState({
 		title: editedProduct ? editedProduct.title : "",
-		imageUrl: editedProduct ? editedProduct.imageUrl : "",
+		imageUrl: editedProduct ? editedProduct.imageUrl : "https://picsum.photos/id/237/200/300", //for testing ease
 		description:editedProduct ? editedProduct.description : "",
 		price: editedProduct ? editedProduct.price.toString(10) : "",
 	});
@@ -30,7 +30,7 @@ const editedProduct = useSelector((state :any) =>
         } else {
         dispatch(productActions.createProduct(product))
         }
-        console.log('dispatching...')
+        props.navigation.goBack()
     },[product, dispatch, prodId])
 
     useEffect(() => {
