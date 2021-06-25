@@ -51,6 +51,7 @@ const editedProduct = useSelector((state :any) =>
                         autoCapitalize='sentences'
                         autoCorrect
                         returnKeyType='done'
+                        
 					/>
 				</View>
 				<View>
