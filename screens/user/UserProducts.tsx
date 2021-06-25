@@ -34,7 +34,7 @@ const UserProducts = (props: any) => {
 							productId: itemData.item.id,
 						});
 					}}
-					handleDeleteButton={() => {
+					handleDeleteButton={() => { 
 						handleDelete(itemData.item.id, itemData.item.title);
 					}}
 				/>
