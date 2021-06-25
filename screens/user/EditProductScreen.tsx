@@ -39,7 +39,7 @@ const editedProduct = useSelector((state :any) =>
 
 
 	return (
-		<ScrollView>
+		<ScrollView style={styles.screen}>
 			<View style={styles.form}>
 				<View>
 					<Text style={styles.label}>Title</Text>
@@ -51,7 +51,7 @@ const editedProduct = useSelector((state :any) =>
                         autoCapitalize='sentences'
                         autoCorrect
                         returnKeyType='done'
-                        
+
 					/>
 				</View>
 				<View>
@@ -111,19 +111,23 @@ EditProductScreen.navigationOptions = (navData: any) => {
 
 const styles = StyleSheet.create({
 	screen: {
-		width: "100%",
+		flex: 1,
+        backgroundColor: '#222',
 	},
 	form: {
 		margin: 20,
 	},
 	label: {
 		marginVertical: 8,
+        color: 'white',
+        fontSize: 16,
 	},
 	input: {
 		paddingHorizontal: 2,
 		paddingVertical: 5,
 		borderColor: "#ccc",
 		borderBottomWidth: 1,
+        color: 'white',
 	},
 });
 export default EditProductScreen;

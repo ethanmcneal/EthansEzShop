@@ -24,6 +24,7 @@ const UserProducts = (props: any) => {
 	const userProds = useSelector((state: any) => state.products.userProducts);
 	return (
 		<FlatList
+            style={{backgroundColor: '#222'}}
 			data={userProds}
 			keyExtractor={(item) => item.id}
 			renderItem={(itemData) => (
